@@ -1,0 +1,44 @@
+/******************************************************************************
+ * JChip8 - A free assembler, disassembler, and emulator for the Chip8        *
+ * by Calvin calzoneman Montgomery                                          *
+ ******************************************************************************
+ *                                                                            *
+ * This work is licensed under the Creative Commons Attribution 3.0 Unported  *
+ * License. To view a copy of this license, visit                             *
+ * http://creativecommons.org/licenses/by/3.0/ or send a letter to            *
+ * Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, *
+ *  94041, USA.                                                               *
+ *                                                                            *
+ ******************************************************************************/
+ 
+ 
+--- JChip8 v1.0 by Calvin Montgomery ---
+
+Usage: java -jar JChip8.jar <run(r)|assemble(a)|disassemble(d)|hexdump(h)> <file> [--output(-o) <dest>]
+
+run <file> loads Chip8 bytecode from <file> and executes it
+assemble <file> assembles Chip8 assembly into bytecode.  If the -o flag is specified, it is saved to <dest>, otherwise <file>.ch8
+disassemble <file> disassembles Chip8 bytecode from <file>. If the -o flag is specified, it is saved to <dest>, otherwise <file>.asm
+hexdump <file> prints the contents of <file> in hexadecimal
+
+As of v1.0, the keymap is hardcoded as follows:
+
+ Chip8       US Keyboard
+1|2|3|C        6|7|8|9
+4|5|6|D        Y|U|I|O
+7|8|9|E        H|J|K|L
+A|0|B|F        N|M|,|.
+
+Also as of v1.0, The emulation speed is unrestricted*.  I have been unable to find documentation on the number of instructions per second
+executed on the Chip-8.  If you happen to know or have suggestions, please contact me.
+
+* While execution speed is not limited, the values of DT and ST are subtracted at a rate of 60Hz, as on the original Chip8
+
+I can't provide ROMs or assembly sources that I did not write without documentation of their licensing, but 
+here are some websites where you may find some:
+<http://www.pong-story.com/chip8/>
+<http://chip8.com/?page=88>
+
+For assembly reference, see
+<http://devernay.free.fr/hacks/chip8/C8TECH10.HTM>
+The mnemonic format used by JChip8's assembler follows the syntax described on that page.
