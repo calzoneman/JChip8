@@ -22,8 +22,7 @@ public class RomLoader {
 		File file = new File(filename);
 		System.out.println(new File(".").getAbsolutePath());
 		if(!file.exists()) return null;
-		try {
-			FileInputStream fis = new FileInputStream(file);
+		try (FileInputStream fis = new FileInputStream(file)) {
 			byte[] raw = new byte[4096];
 			int len = fis.read(raw, 0, 4096);
 			byte[] rom = new byte[len];
