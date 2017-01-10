@@ -139,9 +139,9 @@ public class Assembler {
 						}
 					}
 					else if(args[0].equals("i")) {
-						if(args[0].startsWith("$")) {
-							code.add((byte) (0xA0 | (parseShort(args[0].substring(1)) >> 8)));
-							code.add((byte) (parseShort(args[0].substring(1)) & 0x00FF));
+						if(args[1].startsWith("$")) {
+							code.add((byte) (0xA0 | (parseShort(args[1].substring(1)) >> 8)));
+							code.add((byte) (parseShort(args[1].substring(1)) & 0x00FF));
 						}
 						else {
 							refs.put(ic, args[1]);
@@ -186,7 +186,13 @@ public class Assembler {
 							code.add(parseByte(args[1]));
 						}
 					}
-					else if(args[1].equals("i")) {
+					else if(args[0].equals("i")) {
+						if (!args[1].startsWith("v")) {
+							System.out.println("Unrecognized ADD syntax at line " + (ln+1));
+							System.out.println("> " + opcode + " " + args[0] + ", " + args[1]);
+							return null;
+						}
+						
 						code.add((byte) (0xF0 | parseByte(args[1].substring(1))));
 						code.add((byte) 0x1E);
 					}
