@@ -67,7 +67,6 @@ public class JChip8 {
 	public static void assemble(String srcname, String destname) {
 		ArrayList<String> src = new ArrayList<String>();
 		try (BufferedReader br = new BufferedReader(new FileReader(srcname))) {
-			;
 			String line = "";
 			while(line != null) {
 				src.add(line);
