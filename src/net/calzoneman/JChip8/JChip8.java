@@ -66,8 +66,7 @@ public class JChip8 {
 	
 	public static void assemble(String srcname, String destname) {
 		ArrayList<String> src = new ArrayList<String>();
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(srcname));
+		try (BufferedReader br = new BufferedReader(new FileReader(srcname))) {
 			String line = "";
 			while(line != null) {
 				src.add(line);
@@ -81,8 +80,7 @@ public class JChip8 {
 		
 		byte[] assembled = Assembler.assemble(src);
 		if(assembled != null) {
-			try {
-				FileOutputStream fis = new FileOutputStream(destname);
+			try (FileOutputStream fis = new FileOutputStream(destname)) {
 				fis.write(assembled);
 				System.out.println("Assembled code saved to " + destname);
 			}
